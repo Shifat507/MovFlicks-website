@@ -1,6 +1,6 @@
-import { rating } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import Swal from "sweetalert2";
 
 const AddMovie = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ const AddMovie = () => {
 
     const [errors, setErrors] = useState({});
     const genres = ["Comedy", "Drama", "Horror", "Action", "Thriller"];
-    const years = [2024, 2023, 2022, 2021, 2022, 2021, 2020];
+    const years = [2024, 2023, 2022, 2021, 2020, 2019];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -58,8 +58,7 @@ const AddMovie = () => {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            console.log("Movie Data:", formData);
-            alert("Movie added successfully!");
+            console.log("Movie Data:", formData)
             setFormData({
                 poster: "",
                 title: "",
@@ -72,8 +71,33 @@ const AddMovie = () => {
             setErrors({});
         }
 
-        const allInfo = {poster, title, genre, duration, year, rating, summary}
-        console.log(allInfo);
+        const newMovie = {...formData}
+        console.log(newMovie);
+
+        //send data to the server:
+
+        fetch('http://localhost:5000/movies',{
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newMovie)
+
+        })
+        .then(res=> res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "New movie has been added",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+
+        })
     };
 
     return (

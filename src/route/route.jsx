@@ -13,10 +13,12 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Home></Home>,
+                
             },
             {
                 path: '/addMovie',
@@ -24,7 +26,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/allMovies',
-                element: <AllMovies></AllMovies>
+                element: <AllMovies></AllMovies>,
+                loader: ()=> fetch('http://localhost:5000/movies')
             },
             {
                 path: '/myFavorites',
