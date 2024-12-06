@@ -6,8 +6,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import router from './route/route.jsx';
+import MovieDataProvider from './provider/MovieDataProvider.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <MovieDataProvider>
+
+      <RouterProvider router={router}></RouterProvider>
+    </MovieDataProvider>
   </StrictMode>,
 )

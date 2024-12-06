@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaClock } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
-    const { poster, title, genre, duration, year, rating } = movie;
+    const { _id, poster, title, genre, duration, year, rating } = movie;
 
     const hrs = Math.floor(duration / 60);
     const min = duration % 60;
@@ -31,7 +32,7 @@ return (
                 <div className="flex items-center gap-2 my-2">
                     <span className="text-yellow-500">⭐ {rating}</span>
                 </div>
-                <button className="btn btn-primary w-full mt-2">See Details</button>
+                <Link to={`/details/${_id}`} className="btn btn-error w-full mt-2">See Details</Link>
             </div>
         </div>
     </div>
