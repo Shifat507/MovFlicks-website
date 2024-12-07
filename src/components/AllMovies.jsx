@@ -12,7 +12,7 @@ const AllMovies = () => {
     return (
         <div className='w-11/12 mx-auto'>
             <h1 className='text-4xl font-bold text-center mt-6 mb-12'>All Movies</h1>
-            <div className='grid grid-cols-4 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
                 {
                     allMovies.map((movie, idx) => <MovieCard key={idx} 
                     movie={movie}

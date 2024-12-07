@@ -1,14 +1,19 @@
-import React from 'react';
-import {  Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { Button } from '@material-tailwind/react';
+import { FcGoogle } from 'react-icons/fc';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 
 const Navbar = () => {
+    const { user, handleSignOut, handleGoogleSignIn } = useContext(AuthContext);
     const links = <>
         <li className='mx-2'><NavLink to='/'>Home</NavLink ></li>
         <li className='mx-2'><NavLink to='/addMovie'>Add Movie</NavLink ></li>
         <li className='mx-2'><NavLink to='/allMovies'>All Movies</NavLink ></li>
         <li className='mx-2'><NavLink to='/myFavorites'>My Favorites</NavLink ></li>
-        
+
     </>
 
 
@@ -45,7 +50,17 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/signin' className="btn">Sign in</Link>
+                    {
+                        user ? <Button onClick={handleSignOut} className="btn text-black ">Sign Out
+                            <div className='flex items-center gap-2 text-lg'>
+                                <FaSignOutAlt />
+                            </div>
+                        </Button> : <div className='flex items-center gap-3'>
+                            <Link to='/signin' className="btn">Sign in</Link>
+                            <button onClick={handleGoogleSignIn} className='text-xl'><FcGoogle /></button>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>

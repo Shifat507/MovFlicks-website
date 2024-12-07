@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 
 const UpdateMovieData = () => {
+    const navigate = useNavigate();
     const data = useLoaderData();
-    const {poster, title, genre, duration, year, rating, summary} = data;
+    const { _id, poster, title, genre, duration, year, rating, summary } = data;
     const [formData, setFormData] = useState({
         poster: "",
         title: "",
@@ -54,7 +55,7 @@ const UpdateMovieData = () => {
         return errors;
     };
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
@@ -73,11 +74,34 @@ const UpdateMovieData = () => {
             setErrors({});
         }
 
-        const newMovie = {...formData}
-        console.log(newMovie);
+        const updateMovie = { ...formData }
+        console.log(updateMovie);
+
+        fetch(`http://localhost:5000/movies/${_id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateMovie)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: "Perfume data is updated successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+                navigate('/allMovies')
+            })
 
     }
-    
+
     return (
         <div className="max-w-lg mx-auto mt-10 p-5 shadow-md rounded-lg bg-base-200">
             <h1 className="text-2xl font-bold mb-5">Update Movie</h1>
@@ -166,7 +190,7 @@ const UpdateMovieData = () => {
                         <Rating
                             onClick={handleRating}
                             ratingValue={formData.rating}
-                            // className="inline"
+                        // className="inline"
                         />
                         {errors.rating && <p className="text-red-500">{errors.rating}</p>}
                     </div>

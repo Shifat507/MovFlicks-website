@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddMovie = () => {
+    const {user} = useContext(AuthContext);
+    console.log(user?.email);
     const [formData, setFormData] = useState({
         poster: "",
         title: "",
@@ -11,6 +14,7 @@ const AddMovie = () => {
         year: "",
         rating: 0,
         summary: "",
+        userEmail: user?.email
     });
 
     const [errors, setErrors] = useState({});
@@ -67,6 +71,7 @@ const AddMovie = () => {
                 year: "",
                 rating: 0,
                 summary: "",
+                userEmail: user?.email
             });
             setErrors({});
         }

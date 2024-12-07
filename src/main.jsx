@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 import router from './route/route.jsx';
 import MovieDataProvider from './provider/MovieDataProvider.jsx';
+import AuthProvider from './provider/AuthProvider.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <MovieDataProvider>
-
-      <RouterProvider router={router}></RouterProvider>
-    </MovieDataProvider>
+    <AuthProvider>
+      <MovieDataProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </MovieDataProvider>
+    </AuthProvider>
   </StrictMode>,
 )

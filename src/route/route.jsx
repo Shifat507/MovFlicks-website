@@ -7,10 +7,13 @@ import AddMovie from "../components/Addmovie";
 import AllMovies from "../components/AllMovies";
 import MyFavorites from "../components/MyFavorites";
 import Signin from "../components/Signin";
-import Signout from "../components/Signout";
+
 import ErrorPage from "../components/ErrorPage";
 import MovieDetails from "../components/MovieDetails";
 import UpdateMovieData from "../components/UpdateMovieData";
+import AboutUs from "../components/AboutUs";
+import Register from "../components/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +28,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addMovie',
-                element: <AddMovie></AddMovie>
+                element: <PrivateRoute>
+                    <AddMovie></AddMovie>
+                </PrivateRoute>
             },
             {
                 path: '/update/:id',
@@ -44,17 +49,22 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myFavorites',
-                element: <MyFavorites></MyFavorites>
+                element: <PrivateRoute>
+                    <MyFavorites></MyFavorites>
+                </PrivateRoute>
+            },
+            {
+                path: '/aboutUs',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
             {
                 path: '/signin',
                 element: <Signin></Signin>
-            },
-            {
-                path: '/signout',
-                element: <Signout></Signout>
             }
-
         ]
     },
 ]);
