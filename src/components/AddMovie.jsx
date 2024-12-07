@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const AddMovie = () => {
     const {user} = useContext(AuthContext);
     console.log(user?.email);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         poster: "",
         title: "",
@@ -100,6 +102,7 @@ const AddMovie = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+                  navigate('/allMovies')
             }
 
         })

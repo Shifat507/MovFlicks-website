@@ -13,6 +13,7 @@ const Navbar = () => {
         <li className='mx-2'><NavLink to='/addMovie'>Add Movie</NavLink ></li>
         <li className='mx-2'><NavLink to='/allMovies'>All Movies</NavLink ></li>
         <li className='mx-2'><NavLink to='/myFavorites'>My Favorites</NavLink ></li>
+        <li className='mx-2'><NavLink to='/aboutUs'>About Us</NavLink ></li>
 
     </>
 
@@ -57,7 +58,7 @@ const Navbar = () => {
                             </div>
                         </Button> : <div className='flex items-center gap-3'>
                             <Link to='/signin' className="btn">Sign in</Link>
-                            <button onClick={handleGoogleSignIn} className='text-xl'><FcGoogle /></button>
+                            <Link to='/' onClick={handleGoogleSignIn} className='text-xl'><FcGoogle /></Link>
                         </div>
                     }
 

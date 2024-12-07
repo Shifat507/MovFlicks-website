@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEdit, FaHeart } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FavMovieContext } from '../provider/FavoriteMovieProvider';
 
 const MovieDetails = () => {
     const movieData = useLoaderData();
+    const {setFavMovie} = useContext(FavMovieContext);
     const { _id, poster, title, genre, duration, year, rating, summary } = movieData;
     const hrs = Math.floor(duration / 60);
     const min = duration % 60;
     const navigate = useNavigate();
-
+    const [isActive, setIsActive] = useState(false);
+    
+    const handleFavoriteList = ()=>{
+        setFavMovie(prevMovies => [...prevMovies, movieData]);
+        setIsActive(true)
+    }
 
     const handleDelete = (_id) =>{
         Swal.fire({
@@ -69,7 +76,9 @@ const MovieDetails = () => {
                 <div className='flex items-center gap-8'>
                     <Link to={`/update/${_id}`} className='text-md text-green-600 font-bold px-6 py-1 rounded-xl border-2 border-green-600  flex items-center gap-3'>Update Movie <FaEdit /></Link>
 
-                    <button className='text-md text-purple-600 font-bold px-6 py-1 rounded-xl border-2 border-purple-600  flex items-center gap-3'>Favorite List <FaHeart /></button>
+                    <button onClick={handleFavoriteList} className={`
+                        ${isActive ? 'text-md text-purple-400 font-bold px-6 py-1 rounded-xl border-2 border-purple-600 btn-disabled  flex items-center gap-3' : 'text-md text-purple-600 font-bold px-6 py-1 rounded-xl border-2 border-purple-600  flex items-center gap-3'}
+                        `}>Favorite List <FaHeart /></button>
                 </div>
 
                 <div>
