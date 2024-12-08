@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader: ()=> fetch('http://localhost:5000/movies')
+                loader: ()=> fetch('https://movflicks-server.vercel.app/movies')
                 
             },
             {
@@ -36,17 +36,17 @@ const router = createBrowserRouter([
             {
                 path: '/update/:id',
                 element: <UpdateMovieData></UpdateMovieData>,
-                loader: ({params})=> fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({params})=> fetch(`https://movflicks-server.vercel.app/movies/${params.id}`)
             },
             {
                 path: '/allMovies',
                 element: <AllMovies></AllMovies>,
-                loader: ()=> fetch('http://localhost:5000/movies')
+                loader: ()=> fetch('https://movflicks-server.vercel.app/movies')
             },
             {
                 path: '/details/:id',
                 element: <MovieDetails></MovieDetails>,
-                loader: ({params})=> fetch(`http://localhost:5000/movies/${params.id}`)
+                loader: ({params})=> fetch(`https://movflicks-server.vercel.app/movies/${params.id}`)
             },
             {
                 path: '/myFavorites',

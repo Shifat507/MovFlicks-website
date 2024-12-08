@@ -77,7 +77,7 @@ const UpdateMovieData = () => {
         const updateMovie = { ...formData }
         // console.log(updateMovie);
 
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`https://movflicks-server.vercel.app/movies/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
