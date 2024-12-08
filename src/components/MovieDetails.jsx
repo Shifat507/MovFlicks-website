@@ -17,6 +17,13 @@ const MovieDetails = () => {
     const handleFavoriteList = ()=>{
         setFavMovie(prevMovies => [...prevMovies, movieData]);
         setIsActive(true)
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully added to the Favorite List",
+            showConfirmButton: false,
+            timer: 1500
+          });
     }
 
     const handleDelete = (_id) =>{
