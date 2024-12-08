@@ -3,7 +3,7 @@
 **MovFlicks** is your ultimate destination for exploring movies and shows, tailored for all entertainment enthusiasts. Dive into a world of captivating content with an engaging, user-friendly interface.
 
 ## 🚀 Live Demo  
-Check out the live site here: [MovFlicks Live](https://movflicks.live)  
+Check out the live site here: [MovFlicks Live](https://movflicks-3e6db.web.app)  
 
 ## 🌟 Features  
 - **Explore Movies & Web Series:** Discover trending, top-rated, and upcoming movies and TV shows with ease.  
