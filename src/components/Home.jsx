@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import WebSeries from './WebSeries';
+import FAQ from './FAQ';
 
 
 const Home = () => {
@@ -8,10 +9,12 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div>
-                <WebSeries></WebSeries>
 
+            <WebSeries></WebSeries>
+            <div className='w-10/12 mx-auto my-12'>
+                <FAQ></FAQ>
             </div>
+
         </div>
     );
 };

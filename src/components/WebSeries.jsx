@@ -12,7 +12,7 @@ import Marquee from 'react-fast-marquee';
 const WebSeries = () => {
     return (
         <div>
-            <h1 className='text-3xl font-bold text-center mt-12 mb-6'>Most trending Bangla Web series</h1>
+            <h1 className='text-4xl font-bold text-center mt-12 mb-6'>Most Trendy Bangla Web series</h1>
 
             <Marquee>
 
