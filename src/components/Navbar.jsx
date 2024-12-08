@@ -8,6 +8,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, handleSignOut, handleGoogleSignIn } = useContext(AuthContext);
+    console.log(user);
     const links = <>
         <li className='mx-2'><NavLink to='/'>Home</NavLink ></li>
         <li className='mx-2'><NavLink to='/addMovie'>Add Movie</NavLink ></li>
@@ -52,14 +53,31 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ? <Button onClick={handleSignOut} className="btn text-black ">Sign Out
-                            <div className='flex items-center gap-2 text-lg'>
-                                <FaSignOutAlt />
+                        user ? <div className='flex items-center gap-3'>
+                            <div className="tooltip  tooltip-bottom" data-tip={user.displayName}>
+                                <div className="avatar">
+                                    <div className="ring-primary ring-offset-base-100 w-6 md:w-8 rounded-full ring ring-offset-2 ">
+
+
+                                        <img src={user.photoURL} />
+
+                                    </div>
+                                </div>
                             </div>
-                        </Button> : <div className='flex items-center gap-3'>
-                            <Link to='/signin' className="btn">Sign in</Link>
-                            <Link to='/' onClick={handleGoogleSignIn} className='text-xl'><FcGoogle /></Link>
+                            <Button onClick={handleSignOut} className="btn text-black ">
+                                <div className='hidden md:flex'>
+                                    Sign Out
+                                </div>
+                                <div className='flex items-center gap-2 text-lg'>
+                                    <FaSignOutAlt />
+                                </div>
+                            </Button>
                         </div>
+
+                            : <div className='flex items-center gap-3'>
+                                <Link to='/signin' className="btn">Sign in</Link>
+                                <Link to='/' onClick={handleGoogleSignIn} className='text-xl'><FcGoogle /></Link>
+                            </div>
                     }
 
                 </div>

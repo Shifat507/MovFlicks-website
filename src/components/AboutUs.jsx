@@ -11,7 +11,7 @@ const AboutUs = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg shadow-lg bg-secondary text-secondary-content">
+          <div className="text-center p-6 rounded-lg shadow-lg bg-fuchsia-500 text-secondary-content">
             <FaFilm className="text-5xl mx-auto mb-4" />
             <h2 className="text-2xl font-semibold mb-2">Discover Movies</h2>
             <p>Explore an extensive library of movies across genres, from timeless classics to the latest blockbusters.</p>
