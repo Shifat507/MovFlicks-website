@@ -11,7 +11,7 @@ const Home = () => {
 
     // Sort the data by rating in descending order
     const sortedData = [...data].sort((a, b) => b.rating - a.rating);
-    console.log(sortedData);
+    // console.log(sortedData);
     return (
         <div className=''>
             <Banner></Banner>

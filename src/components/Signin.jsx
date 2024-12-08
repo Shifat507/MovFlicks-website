@@ -18,7 +18,7 @@ const Signin = () => {
         // console.log(email, password);
         userLogin(email, password)
         .then(res=>{
-            console.log(res.user);
+            // console.log(res.user);
             navigate(location?.state ? location.state : '/')
         })
         .catch(err =>{

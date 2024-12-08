@@ -61,7 +61,7 @@ const UpdateMovieData = () => {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            console.log("Movie Data:", formData)
+            // console.log("Movie Data:", formData)
             setFormData({
                 poster: "",
                 title: "",
@@ -75,7 +75,7 @@ const UpdateMovieData = () => {
         }
 
         const updateMovie = { ...formData }
-        console.log(updateMovie);
+        // console.log(updateMovie);
 
         fetch(`http://localhost:5000/movies/${_id}`, {
             method: "PUT",
@@ -86,7 +86,7 @@ const UpdateMovieData = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         position: "top-center",

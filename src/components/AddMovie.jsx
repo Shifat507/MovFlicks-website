@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddMovie = () => {
     const {user} = useContext(AuthContext);
-    console.log(user?.email);
+    // console.log(user?.email);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         poster: "",
@@ -64,7 +64,7 @@ const AddMovie = () => {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            console.log("Movie Data:", formData)
+            // console.log("Movie Data:", formData)
             setFormData({
                 poster: "",
                 title: "",
@@ -79,7 +79,7 @@ const AddMovie = () => {
         }
 
         const newMovie = {...formData}
-        console.log(newMovie);
+        // console.log(newMovie);
 
         //send data to the server:
 
@@ -93,7 +93,7 @@ const AddMovie = () => {
         })
         .then(res=> res.json())
         .then(data =>{
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
                 Swal.fire({
                     position: "top-center",
